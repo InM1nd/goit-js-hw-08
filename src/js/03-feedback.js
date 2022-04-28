@@ -26,4 +26,19 @@ function onSubmitForm(element) {
     email.value = data.email;
     message.value = data.message;
   }
-});
+})();
+
+
+function onSubmitForm(event) {
+  event.preventDefault();
+  const {
+    elements: { email, message }
+  } = event.currentTarget;
+
+  if (email.value === "" || message.value === "") {
+    return alert("Please fill all fields!");
+  }
+
+  console.log(`Email: ${email.value}, Message: ${message.value}`);
+  event.currentTarget.reset();
+}
