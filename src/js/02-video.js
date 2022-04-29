@@ -8,6 +8,7 @@ const player = new Vimeo.Player(playerFrame);
 const onTimeUpdate = time => {
     localStorage.setItem('videoplayer-current-time', time.seconds);
     console.log(parseInt(localStorage.getItem('videoplayer-current-time')));
+};
 
     player.on('timeupdate', throttle(onTimeUpdate, 1000));
 
@@ -24,4 +25,3 @@ const onTimeUpdate = time => {
     }
 });
 
-};

@@ -18,6 +18,18 @@ function onSubmitForm(element) {
   localStorage.removeItem('feedback-form-state');
 }
 
+function onSubmitForm(event) {
+  event.preventDefault();
+  const {
+    elements: { email, message }
+  } = event.currentTarget;
+
+  if (email.value === "" || message.value === "") {
+    return alert("Please fill all fields!");
+  }
+
+}
+
 (function dataFromLocalStorage() {
   const data = JSON.parse(localStorage.getItem('feedback-form-state'));
   const email = document.querySelector('.feedback-form input');
@@ -29,16 +41,3 @@ function onSubmitForm(element) {
 })();
 
 
-function onSubmitForm(event) {
-  event.preventDefault();
-  const {
-    elements: { email, message }
-  } = event.currentTarget;
-
-  if (email.value === "" || message.value === "") {
-    return alert("Please fill all fields!");
-  }
-
-  console.log(`Email: ${email.value}, Message: ${message.value}`);
-  event.currentTarget.reset();
-}
